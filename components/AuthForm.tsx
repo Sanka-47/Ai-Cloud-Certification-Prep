@@ -98,64 +98,89 @@ const AuthForm = ({ type }: { type: FormType }) => {
   const isSignIn = type === "sign-in";
 
   return (
-    <div className="card-border lg:min-w-[566px]">
-      <div className="flex flex-col gap-6 card py-14 px-10">
-        <div className="flex flex-row gap-2 justify-center">
-          <Image src="/logo.svg" alt="logo" height={32} width={38} />
-          <h2 className="text-primary-100">PrepWise</h2>
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-gray-800 rounded-2xl shadow-lg shadow-cyan-500/20 p-8 transform transition-all hover:scale-105">
+        {/* Header with Logo and Branding */}
+        <div className="flex flex-col items-center mb-8">
+          
+          <h2 className="text-3xl font-bold text-cyan-400">CloudPrep</h2>
+          <p className="text-gray-400 mt-2 text-center">
+            Master cloud certifications with AI-powered quizzes
+          </p>
         </div>
 
-        <h3>Practice job interviews with AI</h3>
-
+        {/* Form */}
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="w-full space-y-6 mt-4 form"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             {!isSignIn && (
-              <FormField
-                control={form.control}
-                name="name"
-                label="Name"
-                placeholder="Your Name"
-                type="text"
-              />
+              <div className="relative">
+                <label
+                  htmlFor="name"
+                  className="block text-gray-300 text-sm mb-1"
+                >
+                  Your Name
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  {...form.register("name")} // Using form.register to bind the input to React Hook Form
+                  className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-all"
+                />
+              </div>
             )}
 
-            <FormField
-              control={form.control}
-              name="email"
-              label="Email"
-              placeholder="Your email address"
-              type="email"
-            />
+            <div className="relative">
+              <label
+                htmlFor="email"
+                className="block text-gray-300 text-sm mb-1"
+              >
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                {...form.register("email")} // Using form.register to bind the input to React Hook Form
+                className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-all"
+              />
+            </div>
 
-            <FormField
-              control={form.control}
-              name="password"
-              label="Password"
-              placeholder="Enter your password"
-              type="password"
-            />
+            <div className="relative">
+              <label
+                htmlFor="password"
+                className="block text-gray-300 text-sm mb-1"
+              >
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                {...form.register("password")} // Using form.register to bind the input to React Hook Form
+                className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 transition-all"
+              />
+            </div>
 
-            <Button className="btn" type="submit">
-              {isSignIn ? "Sign In" : "Create an Account"}
+            <Button
+              type="submit"
+              className="w-full bg-cyan-500 text-gray-900 font-semibold py-3 rounded-lg hover:bg-cyan-400 transition-all"
+            >
+              {isSignIn ? "Sign In" : "Create Account"}
             </Button>
           </form>
         </Form>
 
-        <p className="text-center">
-          {isSignIn ? "No account yet?" : "Have an account already?"}
+        {/* Toggle between Sign In and Sign Up */}
+        <p className="text-center text-gray-400 mt-6">
+          {isSignIn ? "Don't have an account?" : "Already have an account?"}
           <Link
-            href={!isSignIn ? "/sign-in" : "/sign-up"}
-            className="font-bold text-user-primary ml-1"
+            href={isSignIn ? "/sign-up" : "/sign-in"}
+            className="text-cyan-400 font-semibold ml-2 hover:underline"
           >
-            {!isSignIn ? "Sign In" : "Sign Up"}
+            {isSignIn ? "Sign Up" : "Sign In"}
           </Link>
         </p>
       </div>
     </div>
-  );
+);
 };
 
 export default AuthForm;

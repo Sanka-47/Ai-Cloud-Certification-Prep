@@ -146,77 +146,101 @@ const Agent = ({
   };
 
   return (
-    <>
-      <div className="call-view">
+    <div className="min-h-screen bg-gradient-to-br to-indigo-50 rounded-3xl flex flex-col items-center justify-center p-6">
+      <div className="w-full max-w-screen-md space-y-6 mb-8">
         {/* AI Interviewer Card */}
-        <div className="card-interviewer">
-          <div className="avatar">
-            <Image
-              src="/ai-avatar.png"
-              alt="profile-image"
-              width={65}
-              height={54}
-              className="object-cover"
-            />
-            {isSpeaking && <span className="animate-speak" />}
+        <div className="relative bg-white rounded-xl shadow-lg overflow-hidden border border-indigo-200">
+          <div className="bg-indigo-100 text-indigo-800 py-4 px-6">
+            <h3 className="text-lg font-semibold">AI Interviewer</h3>
           </div>
-          <h3>AI Interviewer</h3>
+          <div className="p-6 flex items-center space-x-4">
+            <div className="relative">
+              <img
+                src="/rb2.png"
+                alt="AI Interviewer"
+                className="w-16 h-16 rounded-full object-cover ring-2 ring-indigo-300"
+              />
+              {isSpeaking && (
+                <span className="absolute top-0 right-0 w-4 h-4 bg-indigo-500 rounded-full animate-ping" />
+              )}
+            </div>
+            <p className="text-gray-700">Ready to guide you through the interview process and assess your skills.</p>
+          </div>
+          <div className="bg-indigo-50 py-2 px-4 text-sm text-indigo-700 text-center">
+            Intelligent Assessment
+          </div>
         </div>
 
         {/* User Profile Card */}
-        <div className="card-border">
-          <div className="card-content">
-            <Image
-              src="/user-avatar.png"
-              alt="profile-image"
-              width={539}
-              height={539}
-              className="rounded-full object-cover size-[120px]"
+        <div className="relative bg-white rounded-xl shadow-lg overflow-hidden border border-indigo-200">
+          <div className="bg-indigo-100 text-indigo-800 py-4 px-6">
+            <h3 className="text-lg font-semibold">{userName}</h3>
+          </div>
+          <div className="p-6 flex items-center space-x-4">
+            <img
+              src="/pr.png"
+              alt="User Profile"
+              className="w-16 h-16 rounded-full object-cover ring-2 ring-indigo-300"
             />
-            <h3>{userName}</h3>
+            <p className="text-gray-700">Your profile for this interview session.</p>
+          </div>
+          <div className="bg-indigo-50 py-2 px-4 text-sm text-indigo-700 text-center">
+            Your Profile
           </div>
         </div>
-      </div>
 
-      {messages.length > 0 && (
-        <div className="transcript-border">
-          <div className="transcript">
-            <p
-              key={lastMessage}
-              className={cn(
-                "transition-opacity duration-500 opacity-0",
-                "animate-fadeIn opacity-100"
-              )}
-            >
-              {lastMessage}
-            </p>
+        {messages.length > 0 && (
+          <div className="bg-white rounded-lg shadow-md p-6 max-h-96 overflow-y-auto border border-indigo-200">
+            <h4 className="text-lg font-semibold text-gray-700 mb-3 border-b pb-2">Chat Log</h4>
+            <div className="space-y-3">
+              {messages.map((msg, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "py-2 px-4 rounded-lg",
+                    index % 2 === 0
+                      ? "bg-indigo-50 text-indigo-800 self-start"
+                      : "bg-indigo-100 text-indigo-800 self-end text-right"
+                  )}
+                >
+                  <p className="text-sm">{msg}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-
-      <div className="w-full flex justify-center">
-        {callStatus !== "ACTIVE" ? (
-          <button className="relative btn-call" onClick={() => handleCall()}>
-            <span
-              className={cn(
-                "absolute animate-ping rounded-full opacity-75",
-                callStatus !== "CONNECTING" && "hidden"
-              )}
-            />
-
-            <span className="relative">
-              {callStatus === "INACTIVE" || callStatus === "FINISHED"
-                ? "Call"
-                : ". . ."}
-            </span>
-          </button>
-        ) : (
-          <button className="btn-disconnect" onClick={() => handleDisconnect()}>
-            End
-          </button>
         )}
+
+        <div className="flex justify-center">
+          {callStatus !== "ACTIVE" ? (
+            <button
+              className={cn(
+                "relative px-8 py-3 rounded-full font-semibold text-indigo-700 bg-indigo-100 hover:bg-indigo-200 transition-colors duration-300 shadow-md border border-indigo-300",
+                callStatus === "CONNECTING"
+                  ? "bg-gray-400 text-gray-600 border-gray-400 cursor-not-allowed"
+                  : ""
+              )}
+              onClick={handleCall}
+              disabled={callStatus === "CONNECTING"}
+            >
+              <span
+                className={cn(
+                  "absolute left-3 top-1/2 -translate-y-1/2 w-3 h-3 bg-indigo-300 rounded-full animate-ping",
+                  callStatus !== "CONNECTING" && "hidden"
+                )}
+              />
+              {callStatus === "INACTIVE" || callStatus === "FINISHED" ? "Start Interview" : "Connecting..."}
+            </button>
+          ) : (
+            <button
+              className="px-8 py-3 rounded-full bg-red-500 text-white font-semibold hover:bg-red-600 transition-colors duration-300 shadow-md"
+              onClick={handleDisconnect}
+            >
+              End Interview
+            </button>
+          )}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
