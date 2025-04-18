@@ -203,7 +203,9 @@ const Agent = ({
                       : "bg-indigo-100 text-indigo-800 self-end text-right"
                   )}
                 >
-                  <p className="text-sm">{msg}</p>
+                  <p className="text-sm text-dark-100">
+  {msg.role + ": " + msg.content}
+</p>
                 </div>
               ))}
             </div>
@@ -242,6 +244,9 @@ const Agent = ({
       </div>
     </div>
   );
+
+
+
 };
 
 export default Agent;
