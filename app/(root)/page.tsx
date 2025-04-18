@@ -47,7 +47,7 @@ async function Home() {
                 key={interview.id}
                 userId={user?.id}
                 interviewId={interview.id}
-                role={interview.role}
+                role={interview?.role}
                 type={interview.type}
                 techstack={interview.techstack}
                 createdAt={interview.createdAt}
@@ -69,9 +69,9 @@ async function Home() {
                 key={interview.id}
                 userId={user?.id}
                 interviewId={interview.id}
-                role={interview.role}
+                role={interview?.role}
                 type={interview.type}
-                techstack={interview.techstack}
+                techstack={interview?.techstack}
                 createdAt={interview.createdAt}
               />
             ))
