@@ -6,12 +6,12 @@ Built with Next.js for the user interface and backend logic, Firebase for authen
 
 # TechStack
 
-Next.js #br
-Firebase
-Tailwind CSS
-Vapi AI
-shadcn/ui
-Google Gemeni
+Next.js,
+Firebase,
+Tailwind CSS,
+Vapi AI,
+shadcn/ui,
+Google Gemeni,
 Zod
 
 # Ai-Cloud-Certification-Prep
