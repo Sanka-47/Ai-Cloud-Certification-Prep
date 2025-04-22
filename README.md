@@ -6,7 +6,7 @@ Built with Next.js for the user interface and backend logic, Firebase for authen
 
 # TechStack
 
-Next.js
+Next.js #br
 Firebase
 Tailwind CSS
 Vapi AI
