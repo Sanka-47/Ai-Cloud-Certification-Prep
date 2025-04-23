@@ -21,6 +21,13 @@ Zod
 ![PrepWise](https://github.com/user-attachments/assets/f1f1d232-145f-4251-a755-cd322e41d77f)
 
 
+# SignUp - 
+
+
+
+![PrepWise (1)](https://github.com/user-attachments/assets/78fa144b-5a97-4206-bfba-b486ce82dd1f)
+
+
 
 
 
