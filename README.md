@@ -29,6 +29,24 @@ Zod
 
 
 
+# Home Page - 
+
+
+
+![PrepWise (2)](https://github.com/user-attachments/assets/21029475-2a28-46aa-9724-36ff81a3b2b7)
+
+
+
+# Create Interview - 
+
+![PrepWise (3)](https://github.com/user-attachments/assets/dbf2d1b8-dd1d-4250-abb4-0d5239e20182)
+
+# Take Interview -
+
+![image](https://github.com/user-attachments/assets/c1f31fae-74c8-407b-b56c-79b1d4f0e1cd)
+
+
+
 
 
 # Ai-Cloud-Certification-Prep
